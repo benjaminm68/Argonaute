@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Argonaute - Home
+{% endblock %}
+
+{% block body %}
+	<!-- Main section -->
+	<main>
+
+		<!-- New member form -->
+		{% for message in app.flashes('success') %}
+			<div class="flash-notice">
+				{{ message }}
+			</div>
+		{% endfor %}
+
+        {% for message in app.flashes('success-delete') %}
+			<div class="flash-notice-delete">
+				{{ message }}
+			</div>
+		{% endfor %}
+		<h2>Ajouter un(e) Argonaute</h2>
+		{{ form(form) }}
+
+			<!-- Member list -->
+			<h2>Membres de l'équipage:
+				{{ argonautes|length }}/50</h2>
+
+			<section class="member-list">
+
+				<table>
+					<tr>
+						<th>Nom</th>
+						<th>Action</th>
+					</tr>
+
+
+					{% for argonaute in argonautes %}
+						<tr>
+							<td>{{ argonaute.name }}</td>
+							<td>
+								<a href="{{ path('argo_delete', {'id': argonaute.id }) }}">&#10060;</a>
+							</td>
+						</tr>
+					{% endfor %}
+				</table>
+			</section>
+		</main>
+	{% endblock %}
