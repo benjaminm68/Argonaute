@@ -19,6 +19,12 @@
 				{{ message }}
 			</div>
 		{% endfor %}
+
+        {% for message in app.flashes('fail-delete') %}
+			<div class="flash-notice-delete">
+				{{ message }}
+			</div>
+		{% endfor %}
 		<h2>Ajouter un(e) Argonaute</h2>
 		{{ form(form) }}
 

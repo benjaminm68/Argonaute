@@ -67,6 +67,11 @@ class ArgoController extends AbstractController
             'success-delete',
             'L\'argonaute a bien été supprimé !'
         );
+        }else{
+            $this->addFlash(
+                'fail-delete',
+                'L\'argonaute n\'existe pas !'
+            );
         }
         // On redirige l'utilisateur
         return $this->redirectToRoute('argo_home');
